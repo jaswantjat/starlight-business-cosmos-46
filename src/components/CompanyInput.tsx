@@ -31,12 +31,13 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
       toast.error('Please enter a company name');
       if (inputRef.current) {
         inputRef.current.focus();
-        // Shake animation for error
-        gsap.to(inputRef.current, {
-          x: [-5, 5, -5, 5, 0],
-          duration: 0.4,
-          ease: "power1.inOut"
-        });
+        // Shake animation for error - use timeline for sequential values instead of array
+        const tl = gsap.timeline();
+        tl.to(inputRef.current, { x: -5, duration: 0.1 })
+          .to(inputRef.current, { x: 5, duration: 0.1 })
+          .to(inputRef.current, { x: -5, duration: 0.1 })
+          .to(inputRef.current, { x: 5, duration: 0.1 })
+          .to(inputRef.current, { x: 0, duration: 0.1 });
       }
       return;
     }
