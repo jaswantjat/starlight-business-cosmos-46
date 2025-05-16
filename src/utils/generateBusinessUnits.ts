@@ -6,48 +6,50 @@ interface BusinessUnit {
 // This function simulates generating business units based on a company name
 // In a real application, this could make an API call to get real data
 export function generateBusinessUnits(companyName: string): BusinessUnit[] {
-  // Common business units
+  // Common business units with more interesting alternatives
   const commonUnits = [
     "Marketing", 
     "Sales", 
     "Finance", 
-    "HR", 
+    "Human Resources", 
     "Operations", 
-    "IT", 
-    "R&D", 
-    "Customer Support",
-    "Legal",
-    "Product Development"
+    "Information Technology", 
+    "Research & Development", 
+    "Customer Experience",
+    "Legal Affairs",
+    "Product Development",
+    "Strategic Planning",
+    "Global Partnerships"
   ];
 
-  // Specialized units based on first letter of company name
+  // Specialized units based on first letter of company name - enhanced with modern terminology
   const specializedUnits: Record<string, string[]> = {
-    'a': ['Analytics', 'Automation'],
-    'b': ['Brand Strategy', 'Business Intelligence'],
-    'c': ['Content Creation', 'Cloud Services'],
-    'd': ['Digital Transformation', 'Data Science'],
-    'e': ['E-commerce', 'Enterprise Solutions'],
-    'f': ['Fulfillment', 'Financial Planning'],
-    'g': ['Global Relations', 'Growth Hacking'],
-    'h': ['Hospitality', 'Healthcare Solutions'],
-    'i': ['Innovation Lab', 'International Markets'],
-    'j': ['Joint Ventures', 'Journalism'],
-    'k': ['Knowledge Management', 'Key Accounts'],
-    'l': ['Logistics', 'Learning & Development'],
-    'm': ['Mobile Development', 'Mergers & Acquisitions'],
-    'n': ['Network Operations', 'New Markets'],
-    'o': ['Online Presence', 'Organizational Development'],
-    'p': ['Public Relations', 'Partnerships'],
-    'q': ['Quality Assurance', 'Quantitative Analysis'],
-    'r': ['Risk Management', 'Retail Operations'],
-    's': ['Strategic Planning', 'Security'],
-    't': ['Technical Support', 'Talent Acquisition'],
-    'u': ['User Experience', 'Urban Development'],
-    'v': ['Venture Capital', 'Virtual Solutions'],
-    'w': ['Web Development', 'Workforce Planning'],
-    'x': ['XR Development', 'X-platform Strategy'],
-    'y': ['Yield Optimization', 'Youth Markets'],
-    'z': ['Zero Waste Initiative', 'Zoology Research']
+    'a': ['Analytics & Insights', 'AI Innovation', 'Automation Systems'],
+    'b': ['Brand Experience', 'Business Intelligence', 'Blockchain Strategy'],
+    'c': ['Content Creation', 'Cloud Infrastructure', 'Customer Success'],
+    'd': ['Digital Transformation', 'Data Science', 'DevOps Infrastructure'],
+    'e': ['E-commerce Solutions', 'Enterprise Systems', 'Emerging Technologies'],
+    'f': ['Future Ventures', 'Financial Planning', 'Frontend Engineering'],
+    'g': ['Global Relations', 'Growth Hacking', 'Geographic Expansion'],
+    'h': ['Hybrid Solutions', 'Healthcare Innovation', 'Human Experience'],
+    'i': ['Innovation Lab', 'International Markets', 'Infrastructure Security'],
+    'j': ['Joint Ventures', 'Journey Mapping', 'Junction Labs'],
+    'k': ['Knowledge Management', 'Key Accounts', 'Kinetic Design'],
+    'l': ['Logistics & Operations', 'Learning Systems', 'Leadership Development'],
+    'm': ['Mobile Technologies', 'Market Intelligence', 'Metaverse Strategy'],
+    'n': ['Network Operations', 'New Markets', 'Neural Systems'],
+    'o': ['Online Presence', 'Organizational Development', 'Optimization Team'],
+    'p': ['Platform Engineering', 'Partnerships', 'Product Design'],
+    'q': ['Quality Assurance', 'Quantum Computing', 'Quick Response Team'],
+    'r': ['Risk Management', 'Retail Innovation', 'Revenue Operations'],
+    's': ['Security Systems', 'Sustainability', 'SaaS Development'],
+    't': ['Technical Support', 'Talent Acquisition', 'Technology Strategy'],
+    'u': ['User Experience', 'Urban Solutions', 'Unified Communications'],
+    'v': ['Virtual Reality', 'Venture Capital', 'Value Engineering'],
+    'w': ['Web3 Development', 'Workplace Design', 'Worldwide Logistics'],
+    'x': ['XR Development', 'X-platform Strategy', 'Experience Design'],
+    'y': ['Yield Optimization', 'Youth Markets', 'Year-round Planning'],
+    'z': ['Zero Waste Initiative', 'Zenith Performance', 'Zoology Research']
   };
 
   // Get first letter of company name
@@ -56,11 +58,23 @@ export function generateBusinessUnits(companyName: string): BusinessUnit[] {
   // Get specialized units based on first letter or use empty array if none match
   const specialized = specializedUnits[firstLetter] || [];
   
-  // Combine and shuffle
-  const allPossibleUnits = [...specialized, ...commonUnits];
+  // Get a specialized unit based on company length
+  const lengthSpecialized = [
+    'Advanced Analytics',
+    'Customer Insights',
+    'Digital Innovation',
+    'Enterprise Solutions', 
+    'Future Markets',
+    'Global Technology'
+  ];
   
-  // Get a random number of units between 5 and 9
-  const numUnits = Math.floor(Math.random() * 5) + 5; // 5-9 units
+  const lengthUnit = lengthSpecialized[companyName.length % lengthSpecialized.length];
+  
+  // Combine and shuffle
+  const allPossibleUnits = [...specialized, ...commonUnits, lengthUnit];
+  
+  // Get a random number of units between 6 and 9
+  const numUnits = Math.floor(Math.random() * 4) + 6; // 6-9 units
   
   // Shuffle and pick
   const shuffled = allPossibleUnits.sort(() => 0.5 - Math.random());

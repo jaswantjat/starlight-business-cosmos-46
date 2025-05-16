@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
     --background: 240 10% 3.9%;
@@ -47,7 +49,7 @@
 
   /* Always dark mode for this project */
   body {
-    @apply bg-cosmic-bg-dark text-foreground;
+    @apply bg-cosmic-bg-dark text-foreground font-sans;
   }
 }
 
@@ -60,11 +62,23 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
 }
 
 @layer utilities {
   .text-glow {
     text-shadow: 0 0 10px rgba(74, 227, 181, 0.7), 0 0 20px rgba(74, 227, 181, 0.5);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 10px rgba(122, 136, 251, 0.7), 0 0 20px rgba(122, 136, 251, 0.5);
+  }
+  
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(180, 103, 251, 0.7), 0 0 20px rgba(180, 103, 251, 0.5);
   }
   
   .neon-border {
@@ -85,11 +99,50 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
+  .glass-panel-enhanced {
+    background: rgba(16, 16, 22, 0.45);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(122, 136, 251, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-button {
+    background: rgba(122, 136, 251, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(122, 136, 251, 0.3);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-button:hover {
+    background: rgba(122, 136, 251, 0.3);
+    border: 1px solid rgba(122, 136, 251, 0.5);
+    box-shadow: 0 4px 16px -2px rgba(122, 136, 251, 0.25), inset 0 0 4px rgba(255, 255, 255, 0.2);
+  }
+  
   .nebula-bg {
     background: 
       radial-gradient(circle at 20% 35%, rgba(122, 136, 251, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 75% 65%, rgba(74, 227, 181, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 85% 25%, rgba(180, 103, 251, 0.1) 0%, transparent 50%);
+  }
+  
+  .enhanced-nebula-bg {
+    background: 
+      radial-gradient(circle at 10% 25%, rgba(122, 136, 251, 0.3) 0%, transparent 45%),
+      radial-gradient(circle at 80% 75%, rgba(74, 227, 181, 0.2) 0%, transparent 55%),
+      radial-gradient(circle at 65% 20%, rgba(180, 103, 251, 0.25) 0%, transparent 60%),
+      radial-gradient(circle at 30% 85%, rgba(74, 227, 181, 0.15) 0%, transparent 40%);
+  }
+  
+  .circuit-bg {
+    background-image: 
+      linear-gradient(rgba(122, 136, 251, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122, 136, 251, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 70% 35%, rgba(74, 227, 181, 0.05) 0px, transparent 45px),
+      radial-gradient(circle at 30% 65%, rgba(180, 103, 251, 0.05) 0px, transparent 45px);
+    background-size: 30px 30px, 30px 30px, 100% 100%, 100% 100%;
+    background-position: -1px -1px, -1px -1px, 0 0, 0 0;
   }
   
   .grid-bg {
@@ -98,4 +151,141 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+  
+  .highlight-dot {
+    background: radial-gradient(circle at center, rgba(122, 136, 251, 0.8) 0%, rgba(122, 136, 251, 0.3) 30%, transparent 70%);
+  }
+  
+  .cosmic-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cosmic-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(122, 136, 251, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-card:hover::before {
+    opacity: 1;
+  }
+  
+  .progress-glow {
+    filter: drop-shadow(0 0 8px rgba(74, 227, 181, 0.6));
+  }
+  
+  /* 3D perspective container */
+  .perspective-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  .pulse-ring {
+    animation: pulse-ring 3s ease-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .float-animation {
+    animation: float 5s ease-in-out infinite;
+  }
+}
+
+/* Custom cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(74, 227, 181, 0.4);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.cursor-hover {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(122, 136, 251, 0.3);
+}
+
+/* Enhanced glowing effect for text */
+.title-gradient {
+  background: linear-gradient(to right, #4AE3B5, #7A88FB, #B467FB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.title-gradient::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #4AE3B5, #7A88FB, #B467FB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: blur(8px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Connection lines for business unit visualizer */
+.connection-line {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(74, 227, 181, 0.3), rgba(122, 136, 251, 0.3));
+  height: 2px;
+  transform-origin: left center;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(22, 22, 31, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(122, 136, 251, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 136, 251, 0.7);
 }
