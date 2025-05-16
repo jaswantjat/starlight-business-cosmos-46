@@ -66,7 +66,7 @@ const Index = () => {
     document.addEventListener('mousemove', updateCursorPosition);
     
     // Add hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('button, a, input, .glass-panel-enhanced');
+    const interactiveElements = document.querySelectorAll('button, a, input, .glass-panel-enhanced, .glass-panel-dark');
     interactiveElements.forEach(element => {
       element.addEventListener('mouseenter', addHoverClass);
       element.addEventListener('mouseleave', removeHoverClass);
@@ -122,7 +122,7 @@ const Index = () => {
         
         // Pulse animation
         gsap.to(centerPointRef.current, {
-          boxShadow: "0 0 30px rgba(122, 136, 251, 0.7)",
+          boxShadow: "0 0 30px rgba(0, 255, 153, 0.7)",
           repeat: -1,
           yoyo: true,
           duration: 2,
@@ -139,9 +139,9 @@ const Index = () => {
       <div className="fixed inset-0 enhanced-nebula-bg opacity-70"></div>
       <ParticlesBg />
       
-      {/* Decorative elements */}
-      <div className="fixed top-[15%] left-[10%] w-24 h-24 rounded-full bg-cosmic-neon-blue/5 filter blur-3xl"></div>
-      <div className="fixed bottom-[20%] right-[10%] w-32 h-32 rounded-full bg-cosmic-neon-purple/5 filter blur-3xl"></div>
+      {/* Decorative elements - updated with new green tint */}
+      <div className="fixed top-[15%] left-[10%] w-24 h-24 rounded-full bg-cosmic-neon-green/5 filter blur-3xl"></div>
+      <div className="fixed bottom-[20%] right-[10%] w-32 h-32 rounded-full bg-cosmic-neon-green/5 filter blur-3xl"></div>
       <div className="fixed top-[60%] left-[60%] w-48 h-48 rounded-full bg-cosmic-neon-green/5 filter blur-3xl"></div>
       
       {/* Content */}
@@ -157,8 +157,8 @@ const Index = () => {
         >
           {businessUnits.length > 0 && (
             <div className="text-center mb-12">
-              <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-blue/50 to-transparent mx-auto mb-6"></div>
-              <h2 className="text-2xl font-display font-semibold text-cosmic-neon-blue tracking-wider mb-2">
+              <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/50 to-transparent mx-auto mb-6"></div>
+              <h2 className="text-2xl font-display font-semibold text-cosmic-neon-green tracking-wider mb-2 text-glow-green">
                 {companyName}
               </h2>
               <p className="text-gray-400">Business Unit Visualization</p>
@@ -169,11 +169,11 @@ const Index = () => {
           {businessUnits.length > 0 && (
             <div 
               ref={centerPointRef}
-              className="absolute w-16 h-16 rounded-full bg-cosmic-neon-blue/20 flex items-center justify-center z-10"
+              className="absolute w-16 h-16 rounded-full bg-cosmic-neon-green/20 flex items-center justify-center z-10"
             >
-              <div className="w-8 h-8 rounded-full bg-cosmic-neon-blue/50 animate-pulse-glow-blue"></div>
-              <div className="absolute w-24 h-24 rounded-full border border-cosmic-neon-blue/20 animate-pulse-ring"></div>
-              <div className="absolute w-32 h-32 rounded-full border border-cosmic-neon-blue/10 animate-pulse-ring" style={{ animationDelay: '1s' }}></div>
+              <div className="w-8 h-8 rounded-full bg-cosmic-neon-green/50 animate-pulse-glow"></div>
+              <div className="absolute w-24 h-24 rounded-full border border-cosmic-neon-green/20 animate-pulse-ring"></div>
+              <div className="absolute w-32 h-32 rounded-full border border-cosmic-neon-green/10 animate-pulse-ring" style={{ animationDelay: '1s' }}></div>
             </div>
           )}
           

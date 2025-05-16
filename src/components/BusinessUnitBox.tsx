@@ -157,7 +157,7 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       
       // Pulse glow effect on hover
       gsap.to(boxRef.current, {
-        boxShadow: "0 0 25px rgba(122, 136, 251, 0.6)",
+        boxShadow: "0 0 25px rgba(0, 255, 153, 0.6)",
         duration: 0.3
       });
     }
@@ -175,28 +175,20 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       
       // Remove pulse glow effect
       gsap.to(boxRef.current, {
-        boxShadow: "0 0 15px rgba(122, 136, 251, 0.2)",
+        boxShadow: "0 0 15px rgba(0, 255, 153, 0.2)",
         duration: 0.3
       });
     }
   };
-  
-  // Determine a color for each box
-  const colors = ['neon-green', 'neon-blue', 'neon-purple'];
-  const colorIndex = index % colors.length;
-  const colorClass = `cosmic-${colors[colorIndex]}`;
-  const glowClass = colorIndex === 0 ? 'neon-border' : 
-                   colorIndex === 1 ? 'neon-blue-border' : 
-                   'neon-purple-border';
   
   return (
     <div 
       ref={boxRef}
       data-unit-index={index}
       className={cn(
-        "absolute glass-panel-enhanced rounded-lg p-4 shadow-lg transform transition-all duration-300",
+        "absolute glass-panel-dark rounded-lg p-4 shadow-lg transform transition-all duration-300",
         "w-36 h-36 flex items-center justify-center",
-        glowClass,
+        "neon-green-border",
         isHovered ? "z-10" : "z-1"
       )}
       style={{
@@ -215,23 +207,23 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
         )}
       >
         {/* Dot accent in corner */}
-        <div className={`absolute top-1.5 left-1.5 w-2 h-2 rounded-full bg-${colorClass}`}></div>
+        <div className="absolute top-1.5 left-1.5 w-2 h-2 rounded-full bg-cosmic-neon-green"></div>
         
         {/* Animated border on hover */}
         {isHovered && (
           <>
-            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-blue to-transparent animate-shimmer"></div>
-            <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-cosmic-neon-blue to-transparent animate-shimmer"></div>
-            <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-blue to-transparent animate-shimmer"></div>
-            <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-cosmic-neon-blue to-transparent animate-shimmer"></div>
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green to-transparent animate-shimmer"></div>
+            <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-cosmic-neon-green to-transparent animate-shimmer"></div>
+            <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green to-transparent animate-shimmer"></div>
+            <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-cosmic-neon-green to-transparent animate-shimmer"></div>
           </>
         )}
         
         <div 
           className={cn(
             "text-center font-medium text-sm font-display tracking-wide",
-            `text-${colorClass}`,
-            "text-glow transition-all duration-300",
+            "text-cosmic-neon-green",
+            "text-glow-green transition-all duration-300",
             isHovered ? "scale-110" : ""
           )}
         >

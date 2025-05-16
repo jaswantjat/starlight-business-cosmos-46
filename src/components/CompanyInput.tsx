@@ -47,14 +47,14 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
     // Add hover effect for the input panel
     panelRef.current.addEventListener('mouseenter', () => {
       gsap.to(panelRef.current, {
-        boxShadow: '0 0 15px rgba(122, 136, 251, 0.3)',
+        boxShadow: '0 0 15px rgba(0, 255, 153, 0.3)',
         duration: 0.3
       });
     });
     
     panelRef.current.addEventListener('mouseleave', () => {
       gsap.to(panelRef.current, {
-        boxShadow: '0 0 5px rgba(122, 136, 251, 0.1)',
+        boxShadow: '0 0 5px rgba(0, 255, 153, 0.1)',
         duration: 0.3
       });
     });
@@ -65,7 +65,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
       toast.error('Please enter a company name');
       if (inputRef.current) {
         inputRef.current.focus();
-        // Shake animation for error - use timeline for sequential values instead of array
+        // Shake animation for error using timeline for sequential values
         const tl = gsap.timeline();
         tl.to(inputRef.current, { x: -5, duration: 0.1 })
           .to(inputRef.current, { x: 5, duration: 0.1 })
@@ -98,7 +98,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
       
       // Add a ripple effect from the button
       const ripple = document.createElement('div');
-      ripple.className = 'absolute rounded-full bg-cosmic-neon-blue/20';
+      ripple.className = 'absolute rounded-full bg-cosmic-neon-green/20';
       ripple.style.top = '50%';
       ripple.style.left = '50%';
       ripple.style.transform = 'translate(-50%, -50%)';
@@ -133,9 +133,11 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
 
   return (
     <div ref={containerRef} className="w-full max-w-md mx-auto relative perspective-container">
+      <div className="step-indicator">01/03</div>
+      
       <div className="relative">
         {/* Glowing accent line */}
-        <div className="w-32 h-[2px] bg-gradient-to-r from-cosmic-neon-blue to-cosmic-neon-purple mx-auto mb-8 shimmer-line"></div>
+        <div className="w-32 h-[2px] bg-gradient-to-r from-cosmic-neon-green to-cosmic-neon-green/50 mx-auto mb-8 shimmer-line"></div>
         
         <div className="mb-8 text-center">
           <h1 
@@ -143,9 +145,9 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
             className="text-4xl md:text-6xl font-bold mb-3 font-display tracking-tight"
             data-text="Business Unit Visualizer"
           >
-            <span className="inline-block title-gradient animate-float-slow">Business Unit</span>
+            <span className="inline-block text-cosmic-neon-green text-glow-green">Business Unit</span>
             <br />
-            <span className="text-white text-glow-blue">Visualizer</span>
+            <span className="text-white">Visualizer</span>
           </h1>
           <p className="text-gray-300 text-lg">
             Enter your company name to visualize its business units
@@ -154,19 +156,19 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
         
         <div 
           ref={panelRef}
-          className="glass-panel-enhanced rounded-xl p-8 border border-white/10 relative overflow-hidden shadow-lg"
+          className="glass-panel-dark rounded-xl p-8 border border-cosmic-neon-green/10 relative overflow-hidden shadow-lg"
         >
           {/* Enhanced background elements */}
           <div className="absolute inset-0 enhanced-nebula-bg opacity-50"></div>
           <div className="absolute inset-0 circuit-bg"></div>
-          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-blue/30 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/30 to-transparent"></div>
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
           
           {/* Content with improved styling */}
           <div className="relative z-10">
             <label 
               htmlFor="company-name" 
-              className="block mb-3 text-sm font-medium text-gray-200 font-display tracking-wide"
+              className="block mb-3 text-sm font-medium text-cosmic-neon-green font-display tracking-wide"
             >
               COMPANY NAME
             </label>
@@ -174,7 +176,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
               <Input
                 ref={inputRef}
                 id="company-name"
-                className="bg-black/30 border-cosmic-neon-blue/30 focus:border-cosmic-neon-blue focus:ring-1 focus:ring-cosmic-neon-blue/50 text-white placeholder:text-gray-400 rounded-lg h-12"
+                className="bg-black/30 border-cosmic-neon-green/30 focus:border-cosmic-neon-green focus:ring-1 focus:ring-cosmic-neon-green/50 text-white placeholder:text-gray-400 rounded-lg h-12"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -182,16 +184,16 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ onGenerate }) => {
               />
               <Button 
                 onClick={handleGenerate}
-                className="glass-button hover:bg-cosmic-neon-blue/40 text-white font-medium px-6 h-12 rounded-lg transition-all"
+                className="glass-button hover:bg-cosmic-neon-green/40 text-white font-medium px-6 h-12 rounded-lg transition-all"
               >
                 <span className="relative z-10">Generate</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cosmic-neon-blue/30 to-cosmic-neon-purple/30 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cosmic-neon-green/30 to-cosmic-neon-green/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
               </Button>
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-cosmic-neon-blue/5 blur-xl"></div>
-            <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-cosmic-neon-purple/5 blur-xl"></div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-cosmic-neon-green/5 blur-xl"></div>
+            <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-cosmic-neon-green/5 blur-xl"></div>
           </div>
         </div>
       </div>

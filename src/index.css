@@ -50,6 +50,7 @@
   /* Always dark mode for this project */
   body {
     @apply bg-cosmic-bg-dark text-foreground font-sans;
+    background-color: #0a0a10;
   }
 }
 
@@ -69,6 +70,7 @@
 }
 
 @layer utilities {
+  /* Existing utilities */
   .text-glow {
     text-shadow: 0 0 10px rgba(74, 227, 181, 0.7), 0 0 20px rgba(74, 227, 181, 0.5);
   }
@@ -80,9 +82,20 @@
   .text-glow-purple {
     text-shadow: 0 0 10px rgba(180, 103, 251, 0.7), 0 0 20px rgba(180, 103, 251, 0.5);
   }
+
+  /* Enhanced glow for the reference design */
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(74, 227, 181, 0.8), 0 0 15px rgba(74, 227, 181, 0.6), 0 0 30px rgba(74, 227, 181, 0.4);
+  }
   
+  /* Enhanced borders */
   .neon-border {
     box-shadow: 0 0 5px theme('colors.cosmic.neon-green'), 0 0 15px rgba(74, 227, 181, 0.5);
+  }
+  
+  .neon-green-border {
+    box-shadow: 0 0 5px #0f9, 0 0 15px rgba(0, 255, 153, 0.5);
+    border: 1px solid rgba(0, 255, 153, 0.3);
   }
   
   .neon-blue-border {
@@ -93,6 +106,7 @@
     box-shadow: 0 0 5px theme('colors.cosmic.neon-purple'), 0 0 15px rgba(180, 103, 251, 0.5);
   }
   
+  /* Enhanced glass panels */
   .glass-panel {
     background: rgba(22, 22, 31, 0.6);
     backdrop-filter: blur(10px);
@@ -100,47 +114,57 @@
   }
   
   .glass-panel-enhanced {
-    background: rgba(16, 16, 22, 0.45);
+    background: rgba(16, 16, 22, 0.35);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(122, 136, 251, 0.2);
+    border: 1px solid rgba(0, 255, 153, 0.15);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 2px rgba(255, 255, 255, 0.1);
   }
+
+  .glass-panel-dark {
+    background: rgba(10, 10, 16, 0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 153, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 2px rgba(0, 255, 153, 0.1);
+  }
   
+  /* Enhanced buttons */
   .glass-button {
-    background: rgba(122, 136, 251, 0.2);
+    background: rgba(0, 255, 153, 0.15);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(122, 136, 251, 0.3);
+    border: 1px solid rgba(0, 255, 153, 0.3);
     box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
   }
   
   .glass-button:hover {
-    background: rgba(122, 136, 251, 0.3);
-    border: 1px solid rgba(122, 136, 251, 0.5);
-    box-shadow: 0 4px 16px -2px rgba(122, 136, 251, 0.25), inset 0 0 4px rgba(255, 255, 255, 0.2);
+    background: rgba(0, 255, 153, 0.25);
+    border: 1px solid rgba(0, 255, 153, 0.5);
+    box-shadow: 0 4px 16px -2px rgba(0, 255, 153, 0.25), inset 0 0 4px rgba(255, 255, 255, 0.2);
   }
   
+  /* Enhanced backgrounds */
   .nebula-bg {
     background: 
-      radial-gradient(circle at 20% 35%, rgba(122, 136, 251, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 75% 65%, rgba(74, 227, 181, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 85% 25%, rgba(180, 103, 251, 0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 35%, rgba(0, 255, 153, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 75% 65%, rgba(0, 255, 153, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 85% 25%, rgba(0, 255, 153, 0.1) 0%, transparent 50%);
   }
   
   .enhanced-nebula-bg {
     background: 
-      radial-gradient(circle at 10% 25%, rgba(122, 136, 251, 0.3) 0%, transparent 45%),
-      radial-gradient(circle at 80% 75%, rgba(74, 227, 181, 0.2) 0%, transparent 55%),
-      radial-gradient(circle at 65% 20%, rgba(180, 103, 251, 0.25) 0%, transparent 60%),
-      radial-gradient(circle at 30% 85%, rgba(74, 227, 181, 0.15) 0%, transparent 40%);
+      radial-gradient(circle at 10% 25%, rgba(0, 255, 153, 0.2) 0%, transparent 45%),
+      radial-gradient(circle at 80% 75%, rgba(0, 255, 153, 0.15) 0%, transparent 55%),
+      radial-gradient(circle at 65% 20%, rgba(0, 255, 153, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 30% 85%, rgba(0, 255, 153, 0.1) 0%, transparent 40%);
   }
   
+  /* Improved circuit background pattern */
   .circuit-bg {
     background-image: 
-      linear-gradient(rgba(122, 136, 251, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(122, 136, 251, 0.03) 1px, transparent 1px),
-      radial-gradient(circle at 70% 35%, rgba(74, 227, 181, 0.05) 0px, transparent 45px),
-      radial-gradient(circle at 30% 65%, rgba(180, 103, 251, 0.05) 0px, transparent 45px);
+      linear-gradient(rgba(0, 255, 153, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 153, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 70% 35%, rgba(0, 255, 153, 0.05) 0px, transparent 45px),
+      radial-gradient(circle at 30% 65%, rgba(0, 255, 153, 0.05) 0px, transparent 45px);
     background-size: 30px 30px, 30px 30px, 100% 100%, 100% 100%;
     background-position: -1px -1px, -1px -1px, 0 0, 0 0;
   }
@@ -222,7 +246,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: rgba(74, 227, 181, 0.4);
+  background-color: rgba(0, 255, 153, 0.4);
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
@@ -233,12 +257,12 @@
 .cursor-hover {
   width: 40px;
   height: 40px;
-  background-color: rgba(122, 136, 251, 0.3);
+  background-color: rgba(0, 255, 153, 0.3);
 }
 
-/* Enhanced glowing effect for text */
+/* Enhanced title gradient with green focus */
 .title-gradient {
-  background: linear-gradient(to right, #4AE3B5, #7A88FB, #B467FB);
+  background: linear-gradient(to right, #0f9, #7A88FB, #B467FB);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -252,7 +276,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #4AE3B5, #7A88FB, #B467FB);
+  background: linear-gradient(to right, #0f9, #7A88FB, #B467FB);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -261,31 +285,49 @@
   z-index: -1;
 }
 
-/* Connection lines for business unit visualizer */
+/* Connection lines with green glow */
 .connection-line {
   position: absolute;
-  background: linear-gradient(90deg, rgba(74, 227, 181, 0.3), rgba(122, 136, 251, 0.3));
+  background: linear-gradient(90deg, rgba(0, 255, 153, 0.5), rgba(0, 255, 153, 0.2));
   height: 2px;
   transform-origin: left center;
   z-index: -1;
   opacity: 0.6;
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.6);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with green theme */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(22, 22, 31, 0.6);
+  background: rgba(10, 10, 16, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(122, 136, 251, 0.5);
+  background: rgba(0, 255, 153, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(122, 136, 251, 0.7);
+  background: rgba(0, 255, 153, 0.7);
+}
+
+/* Progress indicator */
+.step-indicator {
+  font-family: 'Space Grotesk', sans-serif;
+  color: rgba(0, 255, 153, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  background: rgba(10, 10, 16, 0.75);
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 255, 153, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.2);
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 100;
 }

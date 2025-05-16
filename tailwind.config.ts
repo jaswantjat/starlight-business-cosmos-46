@@ -58,10 +58,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				cosmic: {
-					'bg-dark': '#0A0A12',
+					'bg-dark': '#0A0A10',
 					'bg-dark-alt': '#12121A',
 					'bg-light': '#16161F',
-					'neon-green': '#4AE3B5',
+					'neon-green': '#0f9', // Changed to brighter green
 					'neon-blue': '#7A88FB',
 					'neon-purple': '#B467FB',
 					'neon-teal': '#24CDD8',
@@ -97,8 +97,8 @@ export default {
 					'50%': { transform: 'translateY(-10px)' },
 				},
 				'pulse-glow': {
-					'0%, 100%': { opacity: '0.8', boxShadow: '0 0 5px rgba(74, 227, 181, 0.7)' },
-					'50%': { opacity: '1', boxShadow: '0 0 15px rgba(74, 227, 181, 0.9)' },
+					'0%, 100%': { opacity: '0.8', boxShadow: '0 0 5px rgba(0, 255, 153, 0.7)' },
+					'50%': { opacity: '1', boxShadow: '0 0 15px rgba(0, 255, 153, 0.9)' },
 				},
 				'pulse-glow-blue': {
 					'0%, 100%': { opacity: '0.8', boxShadow: '0 0 5px rgba(122, 136, 251, 0.7)' },
@@ -135,7 +135,7 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0) 100%)',
+				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,255,153,0.05) 25%, rgba(0,255,153,0.1) 50%, rgba(0,255,153,0.05) 75%, rgba(255,255,255,0) 100%)',
 			}
 		}
 	},
