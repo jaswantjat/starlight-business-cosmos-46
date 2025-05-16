@@ -58,14 +58,18 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				cosmic: {
-					'bg-dark': '#0A0A10',
-					'bg-dark-alt': '#12121A',
-					'bg-light': '#16161F',
-					'neon-green': '#0f9', // Changed to brighter green
+					'bg-dark': '#050508',
+					'bg-dark-alt': '#0A0A12',
+					'bg-light': '#12121A',
+					'neon-green': '#00FF99', // Brighter green matching inspiration
 					'neon-blue': '#7A88FB',
 					'neon-purple': '#B467FB',
 					'neon-teal': '#24CDD8',
 					'dark-blue': '#1A1E39',
+					'grid-line': 'rgba(0, 255, 153, 0.2)',
+					'panel-bg': 'rgba(10, 10, 16, 0.8)',
+					'panel-border': 'rgba(0, 255, 153, 0.3)',
+					'panel-glow': 'rgba(0, 255, 153, 0.5)',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -119,6 +123,24 @@ export default {
 				'rotate-appearing': {
 					'0%': { transform: 'rotate(180deg) scale(0)', opacity: '0' },
 					'100%': { transform: 'rotate(0) scale(1)', opacity: '1' },
+				},
+				'grid-fade': {
+					'0%': { opacity: '0.1' },
+					'50%': { opacity: '0.3' },
+					'100%': { opacity: '0.1' },
+				},
+				'scan-line': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(100%)' },
+				},
+				'circuit-flow': {
+					'0%': { backgroundPosition: '0% 0%' },
+					'100%': { backgroundPosition: '200% 0%' },
+				},
+				'node-pulse': {
+					'0%': { transform: 'scale(1)', opacity: '0.7' },
+					'50%': { transform: 'scale(1.2)', opacity: '1' },
+					'100%': { transform: 'scale(1)', opacity: '0.7' },
 				}
 			},
 			animation: {
@@ -132,10 +154,18 @@ export default {
 				'scale-pulse': 'scale-pulse 3s ease-in-out infinite',
 				'shimmer': 'shimmer 6s infinite linear',
 				'rotate-appearing': 'rotate-appearing 0.6s ease-out forwards',
+				'grid-fade': 'grid-fade 4s ease-in-out infinite',
+				'scan-line': 'scan-line 3s ease-in-out infinite',
+				'circuit-flow': 'circuit-flow 8s linear infinite',
+				'node-pulse': 'node-pulse 3s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,255,153,0.05) 25%, rgba(0,255,153,0.1) 50%, rgba(0,255,153,0.05) 75%, rgba(255,255,255,0) 100%)',
+				'circuit-pattern': 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M10 10 L90 10 L90 90 L10 90 Z\' fill=\'none\' stroke=\'%2300FF9922\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M30 10 L30 90\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M50 10 L50 90\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M70 10 L70 90\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M10 30 L90 30\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M10 50 L90 50\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3Cpath d=\'M10 70 L90 70\' stroke=\'%2300FF9911\' stroke-width=\'0.5\'/%3E%3C/svg%3E")',
+				'tech-grid': 'linear-gradient(to right, rgba(0, 255, 153, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 153, 0.1) 1px, transparent 1px)',
+				'glow-radial': 'radial-gradient(circle at center, rgba(0, 255, 153, 0.2) 0%, rgba(0, 255, 153, 0.1) 25%, transparent 60%)',
+				'circuit-flow': 'linear-gradient(90deg, rgba(0, 255, 153, 0) 0%, rgba(0, 255, 153, 0.3) 50%, rgba(0, 255, 153, 0) 100%)',
 			}
 		}
 	},

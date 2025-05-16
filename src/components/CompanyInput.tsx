@@ -49,7 +49,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
       duration: 1.2,
       stagger: 0.25
     }, "-=1");
-    
+
     // Add subtle floating effect
     gsap.to(containerRef.current, {
       y: 10,
@@ -58,7 +58,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
       yoyo: true,
       ease: "sine.inOut"
     });
-    
+
     // Add subtle rotation effect
     gsap.to(panelRef.current, {
       rotationX: 2,
@@ -72,7 +72,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
     // Enhanced hover effect for the input panel
     panelRef.current.addEventListener('mouseenter', () => {
       if (isMobile) return;
-      
+
       gsap.to(panelRef.current, {
         boxShadow: '0 0 30px rgba(0, 255, 153, 0.5), inset 0 0 20px rgba(0, 255, 153, 0.15)',
         scale: 1.02,
@@ -81,14 +81,14 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
     });
     panelRef.current.addEventListener('mouseleave', () => {
       if (isMobile) return;
-      
+
       gsap.to(panelRef.current, {
         boxShadow: '0 0 10px rgba(0, 255, 153, 0.15), inset 0 0 5px rgba(0, 255, 153, 0.05)',
         scale: 1,
         duration: 0.4
       });
     });
-    
+
     // Focus input field automatically after animation completes
     timeline.call(() => {
       if (inputRef.current) {
@@ -186,72 +186,81 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
       <div className="relative">
         {/* Enhanced glowing accent lines */}
         <div className="w-40 h-[2px] bg-gradient-to-r from-transparent via-cosmic-neon-green to-transparent mx-auto mb-12 shimmer-line"></div>
-        
+
         <div className="mb-10 text-center relative">
           {/* Added circuit pattern in background */}
           <div className="absolute inset-0 circuit-bg opacity-20 z-0"></div>
-          
-          <h1 
-            ref={titleRef} 
+
+          <h1
+            ref={titleRef}
             className="text-5xl md:text-7xl font-bold mb-4 font-display tracking-tight relative z-10"
             data-text="Business Unit Visualizer"
           >
-            <span className="inline-block text-cosmic-neon-green text-glow-green">Business</span>
+            <span className="inline-block text-cosmic-neon-green text-glow-green">Starlight</span>
             <br />
-            <span className="text-white">Unit Visualizer</span>
+            <span className="text-white">Business Cosmos</span>
           </h1>
-          <p className="text-gray-300 text-lg relative z-10">
+          <p className="text-gray-300 text-lg relative z-10 font-display tracking-wide">
             Enter your company name to visualize its business units
           </p>
-          
+
           {/* Additional decorative elements */}
           <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/30 to-transparent"></div>
         </div>
-        
-        <div 
-          ref={panelRef} 
-          className="glass-panel-dark rounded-xl p-10 border border-cosmic-neon-green/20 relative overflow-hidden shadow-xl"
+
+        <div
+          ref={panelRef}
+          className="tech-panel rounded-xl p-10 relative overflow-hidden shadow-xl"
           style={{ transformStyle: 'preserve-3d' }}
         >
           {/* Enhanced background elements */}
-          <div className="absolute inset-0 enhanced-nebula-bg opacity-60"></div>
+          <div className="absolute inset-0 tech-bg opacity-80"></div>
           <div className="absolute inset-0 circuit-bg opacity-40"></div>
-          
+
+          {/* Tech grid overlay */}
+          <div className="tech-grid-overlay"></div>
+
           {/* Improved glowing borders with animation */}
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/40 to-transparent animate-shimmer"></div>
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/60 to-transparent"></div>
           <div className="absolute left-0 top-0 w-[1px] h-full bg-gradient-to-b from-cosmic-neon-green/30 via-transparent to-transparent"></div>
           <div className="absolute right-0 top-0 w-[1px] h-full bg-gradient-to-b from-transparent via-cosmic-neon-green/30 to-transparent"></div>
-          
+
+          {/* Scan line effect */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 w-full h-[2px] bg-cosmic-neon-green/10 animate-scan-line"></div>
+          </div>
+
           {/* Content with improved styling */}
           <div className="relative z-10">
             <label htmlFor="company-name" className="block mb-3 text-sm font-medium text-cosmic-neon-green font-display tracking-wider">
               COMPANY NAME
             </label>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Input 
-                ref={inputRef} 
-                id="company-name" 
-                className="bg-black/40 border-cosmic-neon-green/40 focus:border-cosmic-neon-green focus:ring-2 focus:ring-cosmic-neon-green/50 text-white placeholder:text-gray-400 rounded-lg h-14" 
-                value={companyName} 
-                onChange={e => setCompanyName(e.target.value)} 
-                onKeyDown={handleKeyDown} 
-                placeholder="Enter company name..." 
+              <Input
+                ref={inputRef}
+                id="company-name"
+                className="bg-black/40 border-cosmic-neon-green/40 focus:border-cosmic-neon-green focus:ring-2 focus:ring-cosmic-neon-green/50 text-white placeholder:text-gray-400 rounded-lg h-14"
+                value={companyName}
+                onChange={e => setCompanyName(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Enter company name..."
                 autoFocus
               />
-              <Button 
-                onClick={handleGenerate} 
-                className="glass-button h-14 px-8 hover:bg-cosmic-neon-green/40 text-white font-medium rounded-lg transition-all whitespace-nowrap"
+              <Button
+                onClick={handleGenerate}
+                className="tech-button h-14 px-8 text-cosmic-neon-green font-medium rounded-lg transition-all whitespace-nowrap"
               >
-                <span className="relative z-10">Generate</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cosmic-neon-green/40 to-cosmic-neon-green/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative z-10 font-display tracking-wider">GENERATE</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cosmic-neon-green/20 to-cosmic-neon-green/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/80 to-transparent"></span>
               </Button>
             </div>
 
             {/* Decorative elements */}
             <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full bg-cosmic-neon-green/5 blur-2xl"></div>
             <div className="absolute -top-8 -left-8 w-32 h-32 rounded-full bg-cosmic-neon-green/5 blur-2xl"></div>
-            
+
             {/* Added circuit nodes */}
             <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-cosmic-neon-green/40"></div>
             <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-cosmic-neon-green/40"></div>

@@ -51,6 +51,26 @@
   body {
     @apply bg-cosmic-bg-dark text-foreground font-sans;
     background-color: #050508;
+    overflow-x: hidden;
+  }
+
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(5, 5, 8, 0.9);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 153, 0.5);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 153, 0.8);
   }
 }
 
@@ -64,7 +84,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
@@ -75,11 +95,11 @@
   .text-glow {
     text-shadow: 0 0 15px rgba(74, 227, 181, 0.8), 0 0 30px rgba(74, 227, 181, 0.5);
   }
-  
+
   .text-glow-blue {
     text-shadow: 0 0 15px rgba(122, 136, 251, 0.8), 0 0 30px rgba(122, 136, 251, 0.5);
   }
-  
+
   .text-glow-purple {
     text-shadow: 0 0 15px rgba(180, 103, 251, 0.8), 0 0 30px rgba(180, 103, 251, 0.5);
   }
@@ -88,37 +108,79 @@
   .text-glow-green {
     text-shadow: 0 0 15px rgba(0, 255, 153, 0.9), 0 0 25px rgba(0, 255, 153, 0.7), 0 0 40px rgba(0, 255, 153, 0.4);
   }
-  
+
   /* Enhanced borders */
   .neon-border {
     box-shadow: 0 0 10px theme('colors.cosmic.neon-green'), 0 0 20px rgba(0, 255, 153, 0.5);
   }
-  
+
   .neon-green-border {
     box-shadow: 0 0 10px rgba(0, 255, 153, 0.6), 0 0 20px rgba(0, 255, 153, 0.3);
     border: 1px solid rgba(0, 255, 153, 0.4);
   }
-  
+
   .neon-blue-border {
     box-shadow: 0 0 10px theme('colors.cosmic.neon-blue'), 0 0 20px rgba(122, 136, 251, 0.5);
   }
-  
+
   .neon-purple-border {
     box-shadow: 0 0 10px theme('colors.cosmic.neon-purple'), 0 0 20px rgba(180, 103, 251, 0.5);
   }
-  
+
+  /* Enhanced tech-inspired borders */
+  .tech-border {
+    position: relative;
+    border: 1px solid rgba(0, 255, 153, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.2);
+    overflow: hidden;
+  }
+
+  .tech-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.8), transparent);
+    animation: circuit-flow 3s linear infinite;
+  }
+
+  .tech-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -100%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.8), transparent);
+    animation: circuit-flow 3s linear infinite reverse;
+  }
+
+  /* Tech grid overlay */
+  .tech-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: 40px 40px;
+    background-image: theme('backgroundImage.tech-grid');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* Enhanced glass panels */
   .glass-panel {
-    background: rgba(22, 22, 31, 0.6);
+    background: rgba(10, 10, 16, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 153, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   }
-  
+
   .glass-panel-enhanced {
-    background: rgba(16, 16, 22, 0.35);
+    background: rgba(10, 10, 16, 0.35);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 255, 153, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 2px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 153, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 2px rgba(0, 255, 153, 0.1);
   }
 
   .glass-panel-dark {
@@ -127,7 +189,37 @@
     border: 1px solid rgba(0, 255, 153, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 3px rgba(0, 255, 153, 0.15);
   }
-  
+
+  /* Tech-inspired panels */
+  .tech-panel {
+    background: rgba(5, 5, 8, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 153, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 153, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.5), transparent);
+  }
+
+  .tech-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.2), transparent);
+  }
+
   /* Enhanced buttons */
   .glass-button {
     background: rgba(0, 255, 153, 0.15);
@@ -135,33 +227,76 @@
     border: 1px solid rgba(0, 255, 153, 0.4);
     box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.4), inset 0 0 3px rgba(0, 255, 153, 0.2);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
-  
+
   .glass-button:hover {
     background: rgba(0, 255, 153, 0.25);
     border: 1px solid rgba(0, 255, 153, 0.6);
     box-shadow: 0 4px 20px -2px rgba(0, 255, 153, 0.3), inset 0 0 5px rgba(0, 255, 153, 0.3);
   }
-  
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.2), transparent);
+    transition: 0.5s;
+  }
+
+  .glass-button:hover::before {
+    left: 100%;
+  }
+
+  /* Tech button */
+  .tech-button {
+    background: rgba(5, 5, 8, 0.9);
+    color: rgba(0, 255, 153, 0.9);
+    border: 1px solid rgba(0, 255, 153, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 255, 153, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .tech-button:hover {
+    background: rgba(0, 255, 153, 0.2);
+    box-shadow: 0 4px 25px rgba(0, 255, 153, 0.3), inset 0 0 15px rgba(0, 255, 153, 0.2);
+  }
+
+  .tech-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.8), transparent);
+  }
+
   /* Enhanced backgrounds */
   .nebula-bg {
-    background: 
+    background:
       radial-gradient(circle at 20% 35%, rgba(0, 255, 153, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 75% 65%, rgba(0, 255, 153, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 85% 25%, rgba(0, 255, 153, 0.1) 0%, transparent 50%);
   }
-  
+
   .enhanced-nebula-bg {
-    background: 
+    background:
       radial-gradient(circle at 10% 25%, rgba(0, 255, 153, 0.25) 0%, transparent 45%),
       radial-gradient(circle at 80% 75%, rgba(0, 255, 153, 0.2) 0%, transparent 55%),
       radial-gradient(circle at 65% 20%, rgba(0, 255, 153, 0.2) 0%, transparent 60%),
       radial-gradient(circle at 30% 85%, rgba(0, 255, 153, 0.15) 0%, transparent 40%);
   }
-  
+
   /* Improved circuit background pattern */
   .circuit-bg {
-    background-image: 
+    background-image:
       linear-gradient(rgba(0, 255, 153, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 255, 153, 0.04) 1px, transparent 1px),
       radial-gradient(circle at 70% 35%, rgba(0, 255, 153, 0.07) 0px, transparent 45px),
@@ -169,23 +304,67 @@
     background-size: 30px 30px, 30px 30px, 100% 100%, 100% 100%;
     background-position: -1px -1px, -1px -1px, 0 0, 0 0;
   }
-  
+
   .grid-bg {
-    background-image: 
+    background-image:
       linear-gradient(rgba(0, 255, 153, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 255, 153, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
   }
-  
-  .highlight-dot {
-    background: radial-gradient(circle at center, rgba(0, 255, 153, 0.8) 0%, rgba(0, 255, 153, 0.3) 30%, transparent 70%);
-  }
-  
-  .cosmic-card {
+
+  /* Tech-inspired backgrounds */
+  .tech-bg {
+    background-color: #050508;
+    background-image: theme('backgroundImage.circuit-pattern');
     position: relative;
     overflow: hidden;
   }
-  
+
+  .tech-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: theme('backgroundImage.glow-radial');
+    opacity: 0.5;
+    z-index: 0;
+    animation: grid-fade 4s ease-in-out infinite;
+  }
+
+  .tech-bg::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(transparent, rgba(0, 255, 153, 0.05), transparent);
+    animation: scan-line 8s linear infinite;
+  }
+
+  /* Futuristic grid background */
+  .futuristic-grid {
+    background-size: 40px 40px;
+    background-image: theme('backgroundImage.tech-grid');
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-dot {
+    background: radial-gradient(circle at center, rgba(0, 255, 153, 0.8) 0%, rgba(0, 255, 153, 0.3) 30%, transparent 70%);
+  }
+
+  .cosmic-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(5, 5, 8, 0.8);
+    border: 1px solid rgba(0, 255, 153, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 153, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
   .cosmic-card::before {
     content: '';
     position: absolute;
@@ -194,21 +373,83 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .cosmic-card:hover::before {
     opacity: 1;
   }
-  
+
+  /* Tech card with circuit pattern */
+  .tech-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(5, 5, 8, 0.9);
+    border: 1px solid rgba(0, 255, 153, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 153, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: theme('backgroundImage.circuit-pattern');
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .tech-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.8), transparent);
+  }
+
+  /* Node card for business units */
+  .node-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(5, 5, 8, 0.85);
+    border: 1px solid rgba(0, 255, 153, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 153, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .node-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 153, 0.3);
+    border-color: rgba(0, 255, 153, 0.6);
+  }
+
+  .node-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 255, 153, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .node-card:hover::before {
+    opacity: 1;
+  }
+
   .progress-glow {
     filter: drop-shadow(0 0 8px rgba(0, 255, 153, 0.6));
   }
-  
+
   /* 3D perspective container */
   .perspective-container {
     perspective: 1000px;
     transform-style: preserve-3d;
   }
-  
+
   @keyframes pulse-ring {
     0% {
       transform: scale(0.8);
@@ -222,11 +463,11 @@
       opacity: 0;
     }
   }
-  
+
   .pulse-ring {
     animation: pulse-ring 3s ease-out infinite;
   }
-  
+
   @keyframes float {
     0%, 100% {
       transform: translateY(0);
@@ -235,7 +476,7 @@
       transform: translateY(-10px);
     }
   }
-  
+
   .float-animation {
     animation: float 5s ease-in-out infinite;
   }
@@ -369,8 +610,29 @@
 
 /* Better toast styling */
 .sonner-toast {
-  background: rgba(10, 10, 16, 0.85) !important;
+  background: rgba(5, 5, 8, 0.9) !important;
   backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(0, 255, 153, 0.2) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0, 255, 153, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 153, 0.2) !important;
+  color: white !important;
+}
+
+.sonner-toast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 153, 0.8), transparent);
+}
+
+.sonner-toast::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: theme('backgroundImage.circuit-pattern');
+  opacity: 0.05;
+  z-index: -1;
+  pointer-events: none;
 }

@@ -1,0 +1,74 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="1200" height="630" fill="#0A0A10"/>
+  
+  <!-- Grid pattern -->
+  <path d="M0 0 L1200 0 L1200 630 L0 630 Z" stroke="#00FF9933" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M0 210 L1200 210" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.1"/>
+  <path d="M0 420 L1200 420" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.1"/>
+  <path d="M400 0 L400 630" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.1"/>
+  <path d="M800 0 L800 630" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.1"/>
+  
+  <!-- Glowing center -->
+  <circle cx="600" cy="315" r="150" fill="url(#centerGlow)" filter="url(#blur)"/>
+  
+  <!-- Orbital rings -->
+  <circle cx="600" cy="315" r="200" stroke="#00FF9933" stroke-width="2" stroke-opacity="0.4" fill="none"/>
+  <circle cx="600" cy="315" r="250" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.3" fill="none"/>
+  <circle cx="600" cy="315" r="300" stroke="#00FF9933" stroke-width="1" stroke-opacity="0.2" fill="none"/>
+  
+  <!-- Business unit nodes -->
+  <circle cx="750" cy="165" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  <circle cx="450" cy="165" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  <circle cx="850" cy="315" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  <circle cx="350" cy="315" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  <circle cx="750" cy="465" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  <circle cx="450" cy="465" r="30" fill="url(#nodeGlow)" filter="url(#blur)"/>
+  
+  <!-- Connection lines -->
+  <line x1="600" y1="315" x2="750" y2="165" stroke="url(#lineGradient)" stroke-width="2"/>
+  <line x1="600" y1="315" x2="450" y2="165" stroke="url(#lineGradient)" stroke-width="2"/>
+  <line x1="600" y1="315" x2="850" y2="315" stroke="url(#lineGradient)" stroke-width="2"/>
+  <line x1="600" y1="315" x2="350" y2="315" stroke="url(#lineGradient)" stroke-width="2"/>
+  <line x1="600" y1="315" x2="750" y2="465" stroke="url(#lineGradient)" stroke-width="2"/>
+  <line x1="600" y1="315" x2="450" y2="465" stroke="url(#lineGradient)" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="600" y="100" font-family="'Space Grotesk', sans-serif" font-size="60" font-weight="bold" fill="white" text-anchor="middle" filter="url(#textGlow)">Starlight Business Cosmos</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="550" font-family="'Space Grotesk', sans-serif" font-size="32" fill="#00FF99" text-anchor="middle" filter="url(#subtitleGlow)">Interactive Business Unit Visualizer</text>
+  
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF9933"/>
+      <stop offset="50%" stop-color="#00FF99CC"/>
+      <stop offset="100%" stop-color="#00FF9933"/>
+    </linearGradient>
+    
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00FF99" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#00FF9933" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00FF9900" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00FF99" stop-opacity="0.7"/>
+      <stop offset="70%" stop-color="#00FF9933" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00FF9900" stop-opacity="0"/>
+    </radialGradient>
+    
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+    </filter>
+    
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+    
+    <filter id="subtitleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+    </filter>
+  </defs>
+</svg>

@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# Starlight Business Cosmos
 
-## Project info
+An interactive business unit visualization tool with a futuristic cosmic theme. Enter your company name and see a beautiful orbital visualization of potential business units.
 
-**URL**: https://lovable.dev/projects/00a7cc50-569e-458f-bb25-fa05a6dd29fe
+![Starlight Business Cosmos](public/og-image.svg)
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Interactive 3D visualization of business units
+- Cosmic-themed UI with futuristic design elements
+- Responsive design for all device sizes
+- Animated particles background with Three.js
+- Tech-inspired UI components with glowing effects
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/00a7cc50-569e-458f-bb25-fa05a6dd29fe) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Vite - Fast build tool and development server
+- React - UI component library
+- TypeScript - Type-safe JavaScript
+- Tailwind CSS - Utility-first CSS framework
+- shadcn/ui - Reusable UI components
+- Three.js - 3D visualization library
+- GSAP - Animation library
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/00a7cc50-569e-458f-bb25-fa05a6dd29fe) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js 18.x or higher
+- npm or yarn
 
-Yes, you can!
+### Installation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+# Clone the repository
+git clone <YOUR_REPO_URL>
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# Navigate to the project directory
+cd starlight-business-cosmos
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+## Deployment on Render.com
+
+This project includes configuration for easy deployment on Render.com.
+
+### Automatic Deployment
+
+1. Create a new account or log in to [Render.com](https://render.com)
+2. Click on "New" and select "Blueprint" from the dropdown
+3. Connect your GitHub account and select this repository
+4. Render will automatically detect the `render.yaml` configuration
+5. Click "Apply" to deploy the application
+6. Once deployed, you can access your application at the provided URL
+
+### Manual Deployment
+
+1. Create a new account or log in to [Render.com](https://render.com)
+2. Click on "New" and select "Static Site" from the dropdown
+3. Connect your GitHub account and select this repository
+4. Configure the following settings:
+   - **Name**: starlight-business-cosmos (or your preferred name)
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+5. Click "Create Static Site"
+6. Once deployed, you can access your application at the provided URL
+
+### Custom Domain
+
+To connect a custom domain to your Render.com deployment:
+
+1. Go to your dashboard on Render.com
+2. Select your deployed application
+3. Navigate to the "Settings" tab
+4. Scroll down to the "Custom Domain" section
+5. Click "Add Custom Domain" and follow the instructions
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run preview` - Preview the production build locally
+
+### Project Structure
+
+- `src/` - Source code
+  - `components/` - React components
+  - `pages/` - Page components
+  - `utils/` - Utility functions
+  - `hooks/` - Custom React hooks
+- `public/` - Static assets
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
