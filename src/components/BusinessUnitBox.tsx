@@ -29,18 +29,18 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
     const offsetX = Math.sin(angle) * radius;
     const offsetY = Math.cos(angle) * radius;
     
-    // Initial position - come from the center
+    // Initial position - come from the center with more dramatic effect
     gsap.set(boxRef.current, {
       x: 0,
       y: 0,
       opacity: 0,
-      scale: 0.5,
-      rotationX: Math.random() * 90 - 45,
-      rotationY: Math.random() * 90 - 45,
-      rotationZ: Math.random() * 20 - 10,
+      scale: 0.3,
+      rotationX: Math.random() * 120 - 60,
+      rotationY: Math.random() * 120 - 60,
+      rotationZ: Math.random() * 40 - 20,
     });
     
-    // Animate to final position with better easing
+    // Animate to final position with enhanced easing
     gsap.to(boxRef.current, {
       x: offsetX,
       y: offsetY,
@@ -50,8 +50,8 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       rotationY: 0, 
       rotationZ: Math.random() * 8 - 4,
       delay: animationDelay + index * 0.15,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.75)",
+      duration: 1.8,
+      ease: "elastic.out(1.2, 0.75)",
       onComplete: () => {
         // Add connection lines between adjacent units
         if (index > 0) {
@@ -60,7 +60,7 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       }
     });
     
-    // Improved floating animation with rotation
+    // Improved floating animation with subtle rotation
     const floatTl = gsap.timeline({ repeat: -1, yoyo: true });
     
     floatTl
@@ -86,7 +86,7 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       
   }, [index, total, animationDelay]);
   
-  // Create connections between business units
+  // Create connections between business units with enhanced styling
   const createConnectionLine = (element: HTMLDivElement, index: number, angle: number) => {
     // Only connect to previous unit for cleaner visual
     const prevIndex = (index - 1) % total;
@@ -112,23 +112,24 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
         const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         const angleDeg = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
         
-        // Position the line
+        // Position the line with enhanced style
         line.style.width = `${distance}px`;
         line.style.left = `${x1}px`;
         line.style.top = `${y1}px`;
         line.style.transform = `rotate(${angleDeg}deg)`;
+        line.style.boxShadow = '0 0 10px rgba(0, 255, 153, 0.8)';
       };
       
       element.parentElement.appendChild(line);
       updateLine();
       
-      // Animate the line appearing
+      // Enhanced line appearance animation
       gsap.from(line, {
         opacity: 0,
         width: 0,
-        duration: 1,
+        duration: 1.2,
         delay: 0.2,
-        ease: "power2.out"
+        ease: "power3.out"
       });
       
       // Update line position during animations
@@ -144,21 +145,21 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
     }
   };
   
-  // Handle hover interactions
+  // Enhanced hover interactions
   const handleMouseEnter = () => {
     setIsHovered(true);
     if (boxRef.current && contentRef.current) {
       gsap.to(boxRef.current, {
-        scale: 1.15,
-        duration: 0.3,
+        scale: 1.2,
+        duration: 0.4,
         ease: "power2.out",
         zIndex: 10
       });
       
-      // Pulse glow effect on hover
+      // Enhanced glow effect on hover
       gsap.to(boxRef.current, {
-        boxShadow: "0 0 25px rgba(0, 255, 153, 0.6)",
-        duration: 0.3
+        boxShadow: "0 0 30px rgba(0, 255, 153, 0.7)",
+        duration: 0.4
       });
     }
   };
@@ -168,15 +169,16 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
     if (boxRef.current && contentRef.current) {
       gsap.to(boxRef.current, {
         scale: 1,
-        duration: 0.3,
+        duration: 0.4,
         ease: "power2.in",
-        zIndex: 1
+        zIndex: 1,
+        clearProps: "zIndex"
       });
       
       // Remove pulse glow effect
       gsap.to(boxRef.current, {
         boxShadow: "0 0 15px rgba(0, 255, 153, 0.2)",
-        duration: 0.3
+        duration: 0.4
       });
     }
   };
@@ -187,7 +189,7 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
       data-unit-index={index}
       className={cn(
         "absolute glass-panel-dark rounded-lg p-4 shadow-lg transform transition-all duration-300",
-        "w-36 h-36 flex items-center justify-center",
+        "w-40 h-40 flex items-center justify-center",
         "neon-green-border",
         isHovered ? "z-10" : "z-1"
       )}
@@ -203,11 +205,14 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
         ref={contentRef}
         className={cn(
           "relative z-10 w-full h-full flex flex-col items-center justify-center",
-          "p-2 rounded-md backdrop-blur-sm bg-black/20"
+          "p-3 rounded-md backdrop-blur-sm bg-black/30"
         )}
       >
-        {/* Dot accent in corner */}
-        <div className="absolute top-1.5 left-1.5 w-2 h-2 rounded-full bg-cosmic-neon-green"></div>
+        {/* Enhanced dot accent with glow */}
+        <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-cosmic-neon-green animate-pulse-glow"></div>
+        
+        {/* Circuit pattern overlay */}
+        <div className="absolute inset-0 circuit-bg opacity-20"></div>
         
         {/* Animated border on hover */}
         {isHovered && (
@@ -221,7 +226,7 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
         
         <div 
           className={cn(
-            "text-center font-medium text-sm font-display tracking-wide",
+            "text-center font-medium text-base font-display tracking-wide",
             "text-cosmic-neon-green",
             "text-glow-green transition-all duration-300",
             isHovered ? "scale-110" : ""
@@ -230,17 +235,18 @@ const BusinessUnitBox: React.FC<BusinessUnitBoxProps> = ({
           {name}
         </div>
         
-        {/* Show extra detail on hover */}
+        {/* Enhanced hover details */}
         {isHovered && (
-          <div className="mt-2 text-xs text-gray-300 opacity-80 text-center">
-            Unit {index + 1} of {total}
+          <div className="mt-2 text-xs text-gray-300 opacity-90 text-center animate-fade-in">
+            <div className="pb-1 mb-1 border-b border-cosmic-neon-green/20">Unit {index + 1} of {total}</div>
+            <div className="text-cosmic-neon-green/80 text-xs mt-1">Click to expand</div>
           </div>
         )}
       </div>
       
-      {/* Inner accent elements */}
-      <div className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-white/5"></div>
-      <div className="absolute top-2 right-2 w-6 h-[1px] bg-white/10 rotate-45"></div>
+      {/* Enhanced inner accent elements */}
+      <div className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-cosmic-neon-green/10"></div>
+      <div className="absolute top-3 right-3 w-8 h-[1px] bg-cosmic-neon-green/20 rotate-45"></div>
     </div>
   );
 };
