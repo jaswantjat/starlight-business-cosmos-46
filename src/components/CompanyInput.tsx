@@ -1,8 +1,10 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from 'sonner';
 import gsap from 'gsap';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CompanyInputProps {
   onGenerate: (company: string) => void;
@@ -16,8 +18,9 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
-  // Animation on mount
+  // Animation on mount with enhanced timing
   useEffect(() => {
     if (!containerRef.current || !titleRef.current || !panelRef.current) return;
 
@@ -28,62 +31,100 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
       }
     });
 
-    // More dramatic entrance animations
+    // More dramatic entrance animations with slight delay for staggered effect
     timeline.from(titleRef.current, {
-      y: -70,
+      y: -90,
       opacity: 0,
-      duration: 1.4,
+      duration: 1.6,
       ease: "back.out(1.9)"
     }).from(panelRef.current, {
-      y: 70,
+      y: 90,
       opacity: 0,
-      duration: 1.2,
-      ease: "power4.out"
-    }, "-=0.8") // More overlap for smoother sequence
+      duration: 1.4,
+      ease: "elastic.out(1, 0.75)"
+    }, "-=1") // More overlap for smoother sequence
     .from(".shimmer-line", {
       width: "0%",
       opacity: 0,
       duration: 1.2,
       stagger: 0.25
-    }, "-=0.7");
+    }, "-=1");
+    
+    // Add subtle floating effect
+    gsap.to(containerRef.current, {
+      y: 10,
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+    
+    // Add subtle rotation effect
+    gsap.to(panelRef.current, {
+      rotationX: 2,
+      rotationY: 2,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
 
     // Enhanced hover effect for the input panel
     panelRef.current.addEventListener('mouseenter', () => {
+      if (isMobile) return;
+      
       gsap.to(panelRef.current, {
-        boxShadow: '0 0 25px rgba(0, 255, 153, 0.4), inset 0 0 15px rgba(0, 255, 153, 0.1)',
+        boxShadow: '0 0 30px rgba(0, 255, 153, 0.5), inset 0 0 20px rgba(0, 255, 153, 0.15)',
+        scale: 1.02,
         duration: 0.4
       });
     });
     panelRef.current.addEventListener('mouseleave', () => {
+      if (isMobile) return;
+      
       gsap.to(panelRef.current, {
         boxShadow: '0 0 10px rgba(0, 255, 153, 0.15), inset 0 0 5px rgba(0, 255, 153, 0.05)',
+        scale: 1,
         duration: 0.4
       });
     });
-  }, []);
+    
+    // Focus input field automatically after animation completes
+    timeline.call(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    });
+  }, [isMobile]);
 
   const handleGenerate = () => {
     if (!companyName.trim()) {
       toast.error('Please enter a company name');
       if (inputRef.current) {
         inputRef.current.focus();
-        // Shake animation for error using timeline for sequential values
+        // Enhanced shake animation for error using timeline for sequential values
         const tl = gsap.timeline();
         tl.to(inputRef.current, {
-          x: -5,
-          duration: 0.1
+          x: -8,
+          duration: 0.08
         }).to(inputRef.current, {
-          x: 5,
-          duration: 0.1
+          x: 8,
+          duration: 0.08
         }).to(inputRef.current, {
-          x: -5,
-          duration: 0.1
+          x: -8,
+          duration: 0.08
         }).to(inputRef.current, {
-          x: 5,
-          duration: 0.1
+          x: 8,
+          duration: 0.08
+        }).to(inputRef.current, {
+          x: -4,
+          duration: 0.08
+        }).to(inputRef.current, {
+          x: 4,
+          duration: 0.08
         }).to(inputRef.current, {
           x: 0,
-          duration: 0.1
+          duration: 0.08
         });
       }
       return;
@@ -95,16 +136,16 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
 
       // Pulse animation on submit
       tl.to(containerRef.current, {
-        y: -20,
+        y: -30,
         scale: 0.95,
         opacity: 0.8,
-        duration: 0.3,
+        duration: 0.4,
         ease: "power2.in"
       }).to(containerRef.current, {
         y: 0,
         scale: 1,
         opacity: 1,
-        duration: 0.5,
+        duration: 0.6,
         ease: "power2.out"
       });
 
@@ -119,10 +160,10 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
       if (panelRef.current) {
         panelRef.current.appendChild(ripple);
         gsap.to(ripple, {
-          width: '300px',
-          height: '300px',
+          width: '350px',
+          height: '350px',
           opacity: 0,
-          duration: 1,
+          duration: 1.2,
           onComplete: () => {
             if (panelRef.current && panelRef.current.contains(ripple)) {
               panelRef.current.removeChild(ripple);
@@ -133,6 +174,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
     }
     onGenerate(companyName);
   };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       handleGenerate();
@@ -169,13 +211,14 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
         <div 
           ref={panelRef} 
           className="glass-panel-dark rounded-xl p-10 border border-cosmic-neon-green/20 relative overflow-hidden shadow-xl"
+          style={{ transformStyle: 'preserve-3d' }}
         >
           {/* Enhanced background elements */}
           <div className="absolute inset-0 enhanced-nebula-bg opacity-60"></div>
           <div className="absolute inset-0 circuit-bg opacity-40"></div>
           
-          {/* Improved glowing borders */}
-          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/40 to-transparent"></div>
+          {/* Improved glowing borders with animation */}
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cosmic-neon-green/40 to-transparent animate-shimmer"></div>
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
           <div className="absolute left-0 top-0 w-[1px] h-full bg-gradient-to-b from-cosmic-neon-green/30 via-transparent to-transparent"></div>
           <div className="absolute right-0 top-0 w-[1px] h-full bg-gradient-to-b from-transparent via-cosmic-neon-green/30 to-transparent"></div>
@@ -185,7 +228,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
             <label htmlFor="company-name" className="block mb-3 text-sm font-medium text-cosmic-neon-green font-display tracking-wider">
               COMPANY NAME
             </label>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Input 
                 ref={inputRef} 
                 id="company-name" 
@@ -194,10 +237,11 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
                 onChange={e => setCompanyName(e.target.value)} 
                 onKeyDown={handleKeyDown} 
                 placeholder="Enter company name..." 
+                autoFocus
               />
               <Button 
                 onClick={handleGenerate} 
-                className="glass-button h-14 px-8 hover:bg-cosmic-neon-green/40 text-white font-medium rounded-lg transition-all"
+                className="glass-button h-14 px-8 hover:bg-cosmic-neon-green/40 text-white font-medium rounded-lg transition-all whitespace-nowrap"
               >
                 <span className="relative z-10">Generate</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-cosmic-neon-green/40 to-cosmic-neon-green/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
